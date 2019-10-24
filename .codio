@@ -1,0 +1,18 @@
+{
+// Configure your Run and Preview buttons here.
+
+// Run button configuration
+  "commands": {
+        "Node version": "node --version",
+	  "Start Ungit":"ungit --port=4000 --ungitBindIp 0.0.0.0"
+  },
+
+// Preview button configuration
+  "preview": {
+		"Visit Ungit": "https://{{domain4000}}/#/repository?path=%2Fhome%2Fcodio%2Fworkspace",
+        "Project Index (static)": "https://{{domain}}/{{index}}",
+        "Current File (static)": "https://{{domain}}/{{filepath}}",
+        "Box URL": "http://{{domain3000}}/",
+        "Box URL SSL": "https://{{domain3000}}/"
+  }
+}
