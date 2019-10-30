@@ -1,4 +1,3 @@
- 
 #include "BaseballStatistic.h"
 #include "Date.h"
 #include <string>
@@ -8,17 +7,14 @@
 
 using namespace std;
 
-Date::Date(int y, int m, int d):
-       year(y), month(m), day(d){
-				
-			}
+
 BaseballStatistic::BaseballStatistic()
 {
    
 }
 BaseballStatistic::BaseballStatistic(string fname, string lname, string Tname, int Jnum, string p,int abat, int hr, int rbi,
                             char bat, char toss, int sb, double avgbat, int d, int m, int y, double ops, double era)
- :firstname(fname), lastname(lname), position(p), jerseyNum(Jnum), TeamName(Tname), battingAverage(avgbat), atBats(abat),
+ :firstName(fname), lastName(lname), position(p), jerseyNum(Jnum), teamName(Tname), battingAverage(avgbat), atBats(abat),
     throwing(toss), batting(bat), day(d), month(m), year(y){
  }   
 
@@ -47,7 +43,9 @@ string BaseballStatistic::getTeamName()const { return teamName; }
 int BaseballStatistic::getJerseyNum()const { return jerseyNum; }
 string BaseballStatistic::getPosition()const { return position; }
 int BaseballStatistic::getAge()const 
-{/* int age; //tm=todays month, m=month y=year, d=day,  ty todays year
+{ int age; 
+ int tm, m, y, d, ty, td;
+ 
     if (tm > m)
     {
       age = ty - y;
@@ -63,9 +61,11 @@ int BaseballStatistic::getAge()const
     }   
     else
    age = (ty - 1) - y;
+ 
+ return age;
 }
-{return age;}
-*/char BaseballStatistic::getBatting()const {return batting; }
+
+char BaseballStatistic::getBatting()const {return batting; }
 char BaseballStatistic::getThrowing()const {return throwing; }
 int BaseballStatistic::getAtBats()const {return atBats; }
 double BaseballStatistic::getBattingAverage()const {return battingAverage; }
@@ -83,3 +83,4 @@ void BaseballStatistic::print()const {
 		
 }
 
+ 
