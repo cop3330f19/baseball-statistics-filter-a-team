@@ -1,23 +1,15 @@
 #include "BaseballStatistic.h"
 #include "Date.h"
-#include <string>
 #include <iostream>
 #include <iomanip>
 #include <sstream>
 
 using namespace std;
 
-
-    
-
-BaseballStatistic::BaseballStatistic()
-{
-   
-}
 BaseballStatistic::BaseballStatistic(std::string fname, std::string lname, std::string Tname, int Jnum, std::string p,int abat, int hr, int rbi,
-                            char bat, char toss, int sb, double avgbat, int day, int month, int year, double ops, double era)
- :firstName(fname), lastName(lname), position(p), jerseyNum(Jnum), teamName(Tname), battingAverage(avgbat), atBats(abat),
-    throwing(toss), batting(bat){
+                            char B, char T, int sb, double avgbat, int day, int month, int year, double ops, double era)
+    :firstName(fname), lastName(lname), position(p), jerseyNum(Jnum), teamName(Tname), battingAverage(avgbat), atBats(abat),
+    throwing(T), batting(B){
  }   
 
 	
@@ -27,8 +19,8 @@ void BaseballStatistic::setLastName(string lname){ lastName = lname; }
 void BaseballStatistic::BaseballStatistic::setTeamName(string Tname){ teamName = Tname; }
 void BaseballStatistic::BaseballStatistic::setJerseyNum(int Jnum){ jerseyNum = Jnum; }
 void BaseballStatistic::BaseballStatistic::setPosition(string p){ position = p; }
-void BaseballStatistic::BaseballStatistic::setBatting(char bat){ batting = bat; }
-void BaseballStatistic::BaseballStatistic::setThrowing(char toss){ throwing = toss; }
+void BaseballStatistic::BaseballStatistic::setBatting(char B){ batting = B; }
+void BaseballStatistic::BaseballStatistic::setThrowing(char T){ throwing = T; }
 void BaseballStatistic::BaseballStatistic::setAtBats(int abat){ atBats = abat; }
 void BaseballStatistic::BaseballStatistic::setBattingAverage(double avgbat){ battingAverage = avgbat; }
 void BaseballStatistic::BaseballStatistic::setHR(int hr){ hr = hr; }
@@ -80,7 +72,8 @@ double BaseballStatistic::getERA()const {return era; }
 void BaseballStatistic::print()const {
     
 }
-		
-		
-}
+
+
+	
+
 
