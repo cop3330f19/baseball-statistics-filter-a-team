@@ -8,14 +8,16 @@
 using namespace std;
 
 
+    
+
 BaseballStatistic::BaseballStatistic()
 {
    
 }
-BaseballStatistic::BaseballStatistic(string fname, string lname, string Tname, int Jnum, string p,int abat, int hr, int rbi,
-                            char bat, char toss, int sb, double avgbat, int d, int m, int y, double ops, double era)
+BaseballStatistic::BaseballStatistic(std::string fname, std::string lname, std::string Tname, int Jnum, std::string p,int abat, int hr, int rbi,
+                            char bat, char toss, int sb, double avgbat, int day, int month, int year, double ops, double era)
  :firstName(fname), lastName(lname), position(p), jerseyNum(Jnum), teamName(Tname), battingAverage(avgbat), atBats(abat),
-    throwing(toss), batting(bat), day(d), month(m), year(y){
+    throwing(toss), batting(bat){
  }   
 
 	
@@ -42,9 +44,8 @@ string BaseballStatistic::getLastName()const { return lastName; }
 string BaseballStatistic::getTeamName()const { return teamName; }
 int BaseballStatistic::getJerseyNum()const { return jerseyNum; }
 string BaseballStatistic::getPosition()const { return position; }
-int BaseballStatistic::getAge()const 
+/* int BaseballStatistic::getAge()const 
 { int age; 
- int tm, m, y, d, ty, td;
  
     if (tm > m)
     {
@@ -64,7 +65,7 @@ int BaseballStatistic::getAge()const
  
  return age;
 }
-
+*/
 char BaseballStatistic::getBatting()const {return batting; }
 char BaseballStatistic::getThrowing()const {return throwing; }
 int BaseballStatistic::getAtBats()const {return atBats; }
@@ -83,4 +84,3 @@ void BaseballStatistic::print()const {
 		
 }
 
- 
