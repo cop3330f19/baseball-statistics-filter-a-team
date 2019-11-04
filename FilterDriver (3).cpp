@@ -109,7 +109,7 @@ int search(vector<BaseballStatistic> players, string fname, string lname, string
   
    while (lo <= hi) 
     { 
-        int location = lo + (hi-lo)/2; 
+        int location = lo + (hi/2); 
   
         // Check if name is present at mid 
         if (players[location].getLName() == lname && players[location].getFName() == fname) 
