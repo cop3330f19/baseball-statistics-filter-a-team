@@ -31,6 +31,7 @@ int main(){
    char B; 
    char T;
    
+   char option;
     vector<BaseballStatistic> baseList;
 	
     loadFile(baseList);
