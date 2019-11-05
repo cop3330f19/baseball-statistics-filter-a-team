@@ -20,7 +20,8 @@ static void Filter::namesort(vector<BaseballStatistic>& baseList){
         min_idx = i; 
       
         
-        for (j = i+1; j < baseList.size(); j++) 
+        for (j = i+1; j < baseList.size(); j++)
+	{
           if (
               (baseList[j].getFName().compare(baseList[min_idx].getFName()) < 0) || //if getFName() @ j is < getFName() @ min_idx
               (baseList[j].getLName().compare(baseList[min_idx].getLName()) < 0)    //if getLName() @ j is < getLName() @ min_idx
@@ -31,7 +32,7 @@ static void Filter::namesort(vector<BaseballStatistic>& baseList){
         // Swap the found minimum element with the first element 
         swap(baseList, min_idx, i);
        
-       
+	}
     } 
 }
             
