@@ -3,12 +3,14 @@
 
 using namespace std;
 
+//Swap array elements
 static void FILTER::swap(vector<BaseballStatistic>& baseList, int oIdx, int nIdx){
     BaseballStatistic temp = baseList[oIdx]; //temporary employee variable to hold the old value during swap
     baseListList[oIdx] = baseListList[nIdx]; // assign the min_idx(element to be moved) to it's position
     baseListList[nIdx] = temp; //assign the element previously at the now sorted postion
 }
 
+//Sort function for sorting by player name
 static void Filter::namesort(vector<BaseballStatistic>& baseList){
     
      int i, j, min_idx; 
@@ -23,9 +25,9 @@ static void Filter::namesort(vector<BaseballStatistic>& baseList){
         for (j = i+1; j < baseList.size(); j++)
 	{
           if (
-              (baseList[j].getFName().compare(baseList[min_idx].getFName()) < 0) || //if getFName() @ j is < getFName() @ min_idx
-              (baseList[j].getLName().compare(baseList[min_idx].getLName()) < 0)    //if getLName() @ j is < getLName() @ min_idx
-          ) 
+              (baseList[j].getFirstName().compare(baseList[min_idx].getFirstName()) < 0) || //if getFName() @ j is < getFName() @ min_idx
+              (baseList[j].getLastName().compare(baseList[min_idx].getLastName()) < 0) ||   //if getLName() @ j is < getLName() @ min_idx
+	  )   
               
             min_idx = j;
             
@@ -35,7 +37,9 @@ static void Filter::namesort(vector<BaseballStatistic>& baseList){
 	}
     } 
 }
-            
+
+
+//Search function for finding player by name            
 static int FILTER::search(vector<BaseballStatistic> players, string fname, string lname, string p, string ){
   
   int lo = 0;
