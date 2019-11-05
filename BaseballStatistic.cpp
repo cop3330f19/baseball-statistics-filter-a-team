@@ -6,6 +6,7 @@
 
 using namespace std;
 
+//Constructor
 BaseballStatistic::BaseballStatistic(std::string fname, std::string lname, std::string Tname, int Jnum, std::string p,int abat, int hr, int rbi,
                             char B, char T, int sb, double avgbat, int day, int month, int year, double ops, double era)
     :firstName(fname), lastName(lname), position(p), jerseyNum(Jnum), teamName(Tname), battingAverage(avgbat), atBats(abat),
@@ -13,7 +14,7 @@ BaseballStatistic::BaseballStatistic(std::string fname, std::string lname, std::
  }   
 
 	
-
+//mutator functions
 void BaseballStatistic::setFirstName(string fname){ firstName = fname; }
 void BaseballStatistic::setLastName(string lname){ lastName = lname; }
 void BaseballStatistic::BaseballStatistic::setTeamName(string Tname){ teamName = Tname; }
@@ -30,7 +31,7 @@ void BaseballStatistic::BaseballStatistic::setOPS(double ops){ ops = ops; }
 void BaseballStatistic::BaseballStatistic::setERA(double era){ era = era; }
 		
 		
-		//accessor
+//accessor functions
 string BaseballStatistic::getFirstName()const { return firstName; }
 string BaseballStatistic::getLastName()const { return lastName; }
 string BaseballStatistic::getTeamName()const { return teamName; }
@@ -68,9 +69,11 @@ int BaseballStatistic::getSB()const {return sb; }
 double BaseballStatistic::getOPS()const {return ops; }
 double BaseballStatistic::getERA()const {return era; }
 		
-		//prints a single statistic row to the terminal
+//prints a single statistic row to the terminal
 void BaseballStatistic::print()const {
-    
+    cout << getFirstName() << " " << getLastName() << " " << getTeamName() << " " << getJerseyNum() << " " << getPosition() << " " 
+    << getAge() << " " << getBatting() << " " << getThrowing() << " " << getAtBats() << " " << getBattingAverage() << " " << 
+    getHR() << " " << getRBI() << " " << getSB() << " " << getOPS() << " " << getERA();
 }
 int main()
 {
