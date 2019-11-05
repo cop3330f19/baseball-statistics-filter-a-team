@@ -63,8 +63,8 @@ void loadFile (vector<BaseballStatistic>& baseList){
 
   while(getline(in,temp)) // reading file
   {
-      string Tname, fname, lname, p;
-	int Jnum, atbat, hr, rbi, sb;
+    string Tname, fname, lname, p;
+    int Jnum, atbat, hr, rbi, sb;
     double avgbat, ops, era;
     char B, T;
       
