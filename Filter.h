@@ -9,7 +9,7 @@ using namespace std;
 class Filter {
   public:
   static void swap(vector<BaseballStatistic>&, int, int);
-  static void sort(vector<BaseballStatistic>&);
+  static void namesort(vector<BaseballStatistic>&);
   static int search(vector<BaseballStatistic>&, std::string, std::string, std::string, std::string);
 };
 #endif
