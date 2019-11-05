@@ -25,8 +25,8 @@ static void Filter::namesort(vector<BaseballStatistic>& baseList){
         for (j = i+1; j < baseList.size(); j++)
 	{
           if (
-              (baseList[j].getFirstName().compare(baseList[min_idx].getFirstName()) < 0) || //if getFName() @ j is < getFName() @ min_idx
-              (baseList[j].getLastName().compare(baseList[min_idx].getLastName()) < 0) ||   //if getLName() @ j is < getLName() @ min_idx
+              (baseList[j].getFirstName().compare(baseList[min_idx].getFirstName()) < 0) || //if getFirstName() @ j is < getFirstName() @ min_idx
+              (baseList[j].getLastName().compare(baseList[min_idx].getLastName()) < 0)      //if getLastName() @ j is < getLastName() @ min_idx
 	  )   
               
             min_idx = j;
@@ -38,6 +38,28 @@ static void Filter::namesort(vector<BaseballStatistic>& baseList){
     } 
 }
 
+//Sort function for sorting by team
+static void teamsort(vector<BaseballStatistic>&) {
+    int i, j, min_idx; 
+  
+    // One by one move boundary of unsorted subarray 
+    for (i = 0; i < baseList.size()-1; i++) 
+    { 
+        // Find the minimum element in unsorted array 
+        min_idx = i; 
+      
+        
+        for (j = i+1; j < baseList.size(); j++)
+	{
+          if ((baseList[j].getTeamName().compare(baseList[min_idx].getTeamName()) < 0)) //if getTeamName() @ j is < getTeamName() @ min_idx        
+          	min_idx = j;
+            
+        // Swap the found minimum element with the first element 
+        swap(baseList, min_idx, i);
+       
+	}
+    } 
+}
 
 //Search function for finding player by name            
 static int FILTER::search(vector<BaseballStatistic> players, string fname, string lname, string p, string ){
@@ -47,7 +69,7 @@ static int FILTER::search(vector<BaseballStatistic> players, string fname, strin
   
    while (lo <= hi) 
     { 
-        int location = lo + (hi/2); 
+        int location = (lo + hi)/2; 
   
         // Check if name is present at mid 
         if (players[location].getLName() == lname && players[location].getFName() == fname) 
