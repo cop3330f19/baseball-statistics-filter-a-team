@@ -31,8 +31,8 @@ int main(){
    char B; 
    char T;
    
-   char option;
-    vector<BaseballStatistic> baseList;
+   string option, answer;
+   vector<BaseballStatistic> baseList;
 	
     loadFile(baseList);
         
@@ -41,7 +41,9 @@ int main(){
 	cin >> answer;
         
 	 cout << "How would you like to find them Team (Position,Batting,Batting Average,Home Runs,Runs Batted In,Stolen Bases,OPS,ERA)? ";
-	 
+	 cin >> option;
+	 search(baseList,option);
+	    
     }while(answer != n || answer != no);
     sort(baseList);
     cout << endl << "Sorted " << endl;
