@@ -39,7 +39,7 @@ static void Filter::namesort(vector<BaseballStatistic>& baseList){
 }
 
 //Sort function for sorting by team
-static void Filter::teamsort(vector<BaseballStatistic>&) {
+static void Filter::teamsort(vector<BaseballStatistic>& baseList) {
     int i, j, min_idx; 
   
     // One by one move boundary of unsorted subarray 
@@ -62,30 +62,36 @@ static void Filter::teamsort(vector<BaseballStatistic>&) {
 }
 
 //Search function for finding player by name            
-static int Filter::search(vector<BaseballStatistic> players, string fname, string lname, string p, string ){
-  
-  int lo = 0;
-  int hi = players.size();
-  
-   while (lo <= hi) 
-    { 
-        int location = (lo + hi)/2; 
-  
-        // Check if name is present at mid 
-        if (players[location].getLName() == lname && players[location].getFName() == fname) 
-            return location; 
-  
-        // If name greater, ignore left half 
-        if (players[location].getLName() < lname 
-			|| (players[location].getLName() == lname && players[location].getFName() < fname)) 
-            lo = location + 1; 
-  
-        // If name is smaller, ignore right half 
-        else
-            hi = location - 1; 
-    } 
-  
-    // then element was not present 
-    return -1; 
- 
+static int Filter::search(vector<BaseballStatistic> players, string Option){
+	
+	switch (Option)
+	{
+		case "T":
+			cout << "What team are you searching for?: ";
+		        break;
+		case "P":
+			cout << "What position are you searching for?: ";
+			break;
+		case "B":
+			cout << "What type of Batter are you searching for(L,R)? ";
+			break;
+		case "BA":
+			cout << "What batting average are you looking for? ";
+			break;
+		case "HR":
+			cout << "What home run amont are you searching for? ";
+			break;
+		case "RBI":
+			cout << "What RBI rating are you looking for? ";
+			break;
+		case "SB":
+			cout << "What Stolen Bases amount are you looking for? ";
+			break;
+		case "OPS":
+			cout << "What On Base plus slugging amount are you looking for? ";
+			break;
+		case "ERA":
+			cout << "What Earned Run Average are you looking for? ";
+			break;
+	}
 }
