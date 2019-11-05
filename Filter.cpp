@@ -4,7 +4,7 @@
 using namespace std;
 
 //Swap array elements
-static void FILTER::swap(vector<BaseballStatistic>& baseList, int oIdx, int nIdx){
+static void Filter::swap(vector<BaseballStatistic>& baseList, int oIdx, int nIdx){
     BaseballStatistic temp = baseList[oIdx]; //temporary employee variable to hold the old value during swap
     baseListList[oIdx] = baseListList[nIdx]; // assign the min_idx(element to be moved) to it's position
     baseListList[nIdx] = temp; //assign the element previously at the now sorted postion
