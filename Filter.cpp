@@ -67,7 +67,15 @@ static int Filter::search(vector<BaseballStatistic> players, string Option){
 	switch (Option)
 	{
 		case "T":
+			string team;
 			cout << "What team are you searching for?: ";
+			cin >> team;
+			
+			if (getTeamName() = team)
+			{
+				cout << "How would you like to sort (PlayerName (P),TeamName(T))?";
+				cin >> 
+			}
 		        break;
 		case "P":
 			cout << "What position are you searching for?: ";
