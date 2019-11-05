@@ -37,7 +37,7 @@ string BaseballStatistic::getLastName()const { return lastName; }
 string BaseballStatistic::getTeamName()const { return teamName; }
 int BaseballStatistic::getJerseyNum()const { return jerseyNum; }
 string BaseballStatistic::getPosition()const { return position; }
-/* int BaseballStatistic::getAge()const 
+int BaseballStatistic::getAge()const 
 { int age; 
  
     if (tm > m)
@@ -58,7 +58,7 @@ string BaseballStatistic::getPosition()const { return position; }
  
  return age;
 }
-*/
+
 char BaseballStatistic::getBatting()const {return batting; }
 char BaseballStatistic::getThrowing()const {return throwing; }
 int BaseballStatistic::getAtBats()const {return atBats; }
