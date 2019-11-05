@@ -18,7 +18,10 @@ class BaseballStatistic
 			atBats,
 			hr,
 			rbi,
-			sb;
+			sb,
+			month,
+			day,
+			year;
 		
 		char batting,
 			throwing;
