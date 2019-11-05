@@ -39,7 +39,7 @@ static void Filter::namesort(vector<BaseballStatistic>& baseList){
 }
 
 //Sort function for sorting by team
-static void teamsort(vector<BaseballStatistic>&) {
+static void Filter::teamsort(vector<BaseballStatistic>&) {
     int i, j, min_idx; 
   
     // One by one move boundary of unsorted subarray 
@@ -62,7 +62,7 @@ static void teamsort(vector<BaseballStatistic>&) {
 }
 
 //Search function for finding player by name            
-static int FILTER::search(vector<BaseballStatistic> players, string fname, string lname, string p, string ){
+static int Filter::search(vector<BaseballStatistic> players, string fname, string lname, string p, string ){
   
   int lo = 0;
   int hi = players.size();
