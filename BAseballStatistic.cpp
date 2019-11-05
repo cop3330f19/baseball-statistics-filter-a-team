@@ -68,9 +68,12 @@ int BaseballStatistic::getSB()const {return sb; }
 double BaseballStatistic::getOPS()const {return ops; }
 double BaseballStatistic::getERA()const {return era; }
 		
-		//prints a single statistic row to the terminal
+	
+ //prints a single statistic row to the terminal
 void BaseballStatistic::print()const {
-    
+    cout << getFirstName() << " " << getLastName() << " " << getTeamName() << " " << getJerseyNum() << " " << getPosition() << " " 
+    << getAge() << " " << getBatting() << " " << getThrowing() << " " << getAtBats() << " " << getBattingAverage() << " " << 
+    getHR() << " " << getRBI() << " " << getSB() << " " << getOPS() << " " << getERA();
 }
 int main()
 {
