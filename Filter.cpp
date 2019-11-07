@@ -63,7 +63,8 @@ static void Filter::teamsort(vector<BaseballStatistic>& baseList) {
 
 //Search function for finding player by name            
 static int Filter::search(vector<BaseballStatistic> players, string Option){
-	
+
+	string choice;
 	switch (Option)
 	{
 		case "T":
@@ -74,14 +75,36 @@ static int Filter::search(vector<BaseballStatistic> players, string Option){
 			if (getTeamName() = team)
 			{
 				cout << "How would you like to sort (PlayerName (P),TeamName(T))?";
-				cin >> 
+				cin >> choice;
 			}
+			else
+				cout << "Team not found" << endl;
 		        break;
 		case "P":
+			string pos;
 			cout << "What position are you searching for?: ";
+			cin >> pos;
+			
+			if (getPosition() = pos)
+			{
+				cout << "How would you like to sort (PlayerName (P),TeamName(T))?";
+				cin >> choice;
+			}
+			else
+				cout << "Position not found" << endl;
 			break;
 		case "B":
+			char bat;
 			cout << "What type of Batter are you searching for(L,R)? ";
+			cin >> bat;
+			
+			if (getBatting() = bat)
+			{
+				cout << "How would you like to sort (PlayerName (P),TeamName(T))?";
+				cin >> choice;
+			}
+			else
+				cout << "Position not found" << endl;
 			break;
 		case "BA":
 			cout << "What batting average are you looking for? ";
