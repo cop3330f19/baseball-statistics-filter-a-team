@@ -4,20 +4,86 @@
 #include "StringHelper.h"
 #include "Filter.h"
 #include <iostream>
-#include <vector>
 #include <iomanip>
+#include <vector>
 #include <string>
+#include <fstream>
+#include <sstream>
 
 using namespace std;
 
 ////Function
-void loadFile(vector<BaseballStatistic>&);
 
 
 int main(){
+  string Tname, fname, lname, p;
+  int Jnum, atbat, hr, rbi, sb;
+  double avgbat, ops, era;
+  char B, T;
+  string answer, option;
+	
+  vector<BaseballStatistic> baseList;
+
+  //Opens Baseball stats data file	
+  ifstream in;
+  in.open("BStats.csv");// open file
+
+  while(in.good()) // reading file
+  {
+        string temp; // temp variable to hold the old value during the swap
+	if (!getline( in, temp ))
+	{
+		return 0;
+	}
+	
+	stringstream strs (temp);
+	
+   	while(strs)
+        {	
+		//Reads in each individual statistic line seperated by a comma
+		getline(strs,Tname,',');
+		getline(strs,fname,',');
+		getline(strs,Jnum,',');
+		getline(strs,lname,',');
+		getline(strs,y,',');
+		getline(strs,m,',');
+		getline(strs,d,',');
+		getline(strs,B,',');
+		getline(strs,T,',');
+		getline(strs,atbat,',');
+		getline(strs,avgbat,',');
+		getline(strs,hr,',');
+		getline(strs,rbi,',');
+		getline(strs,sb,',');
+		getline(strs,ops,',');
+		getline(strs,era,',');
+		getline(strs,p,',');
+		
+		baselist.push_back(temp);
+        }
+   }
+     
+    //While loop that runs as long as user wants to continues to search  for a team (as long as the user doesn't say no)
+    do{
+	cout << "Do you want to search for someone (y or yes/n or no)? ";
+	cin >> answer;
+        
+	 cout << "How would you like to find them Team (Position,Batting,Batting Average,Home Runs,Runs Batted In,Stolen Bases,OPS,ERA)? ";
+	 cin >> option;
+	 search(baseList,option);
+	    
+    }while(answer != "n" || answer != "no");
+    sort(baseList);
+    cout << endl << "Sorted " << endl;
+    printHeading();
     
-   
-   int Jnum = 0;
+    cout << endl << endl;
+    string cont ="";
+	
+return 0;
+}   
+    
+/*int Jnum = 0;
    int atBat = 0;
    int hr = 0;
    int rbi = 0; 
@@ -30,51 +96,4 @@ int main(){
    double era = 0;
    char B; 
    char T;
-   
-   string option, answer;
-   vector<BaseballStatistic> baseList;
-	
-    loadFile(baseList);
-        
-    do{
-	cout << "Do you want to search for someone (y or yes/n or no)? ";
-	cin >> answer;
-        
-	 cout << "How would you like to find them Team (Position,Batting,Batting Average,Home Runs,Runs Batted In,Stolen Bases,OPS,ERA)? ";
-	 cin >> option;
-	 search(baseList,option);
-	    
-    }while(answer != n || answer != no);
-    sort(baseList);
-    cout << endl << "Sorted " << endl;
-    printHeading();
-    
-    cout << endl << endl;
-    string cont ="";
-	
-return 0;
-}   
-    
-void loadFile (vector<BaseballStatistic>& baseList){
-  ifstream in;
-  in.open("BStats.csv");// open file
- 
-  string temp; // temp variable to hold the old value during the swap
-
-  while(getline(in,temp)) // reading file
-  {
-    string Tname, fname, lname, p;
-    int Jnum, atbat, hr, rbi, sb;
-    double avgbat, ops, era;
-    char B, T;
-      
-      	while(in >> Tname >> fname >> Jnum >> lname >> y >> m >> d >> B >> T >> atbat >> avgbat>> hr >> rbi >> sb>> ops >> era >> p)
-       {
-		BaseballStatistic temp(Tname, fname, Jnum, lname, y, m, d, B, T, atbat, avgbat, hr, rbi, sb, ops, era, p);
-		baseList.push_back(temp);
-       }
-   }
-    
-}
-    
-    
+    while(in >> Tname >> fname >> Jnum >> lname >> y >> m >> d >> B >> T >> atbat >> avgbat>> hr >> rbi >> sb>> ops >> era >> p)
