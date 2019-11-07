@@ -3,6 +3,7 @@
 #include <iostream>
 #include <iomanip>
 #include <sstream>
+#include <ctime>
 
 using namespace std;
 
@@ -11,24 +12,27 @@ BaseballStatistic::BaseballStatistic(std::string fname, std::string lname, std::
                             char B, char T, int sb, double avgbat, int day, int month, int year, double ops, double era)
     :firstName(fname), lastName(lname), position(p), jerseyNum(Jnum), teamName(Tname), battingAverage(avgbat), atBats(abat),
     throwing(T), batting(B){
+        Date b(year, month, day);
+        dob = &b;
+          
  }   
 
 	
 //mutator functions
 void BaseballStatistic::setFirstName(string fname){ firstName = fname; }
 void BaseballStatistic::setLastName(string lname){ lastName = lname; }
-void BaseballStatistic::BaseballStatistic::setTeamName(string Tname){ teamName = Tname; }
-void BaseballStatistic::BaseballStatistic::setJerseyNum(int Jnum){ jerseyNum = Jnum; }
-void BaseballStatistic::BaseballStatistic::setPosition(string p){ position = p; }
-void BaseballStatistic::BaseballStatistic::setBatting(char B){ batting = B; }
-void BaseballStatistic::BaseballStatistic::setThrowing(char T){ throwing = T; }
-void BaseballStatistic::BaseballStatistic::setAtBats(int abat){ atBats = abat; }
-void BaseballStatistic::BaseballStatistic::setBattingAverage(double avgbat){ battingAverage = avgbat; }
-void BaseballStatistic::BaseballStatistic::setHR(int hr){ hr = hr; }
-void BaseballStatistic::BaseballStatistic::setRBI(int rbi){ rbi = rbi; }
-void BaseballStatistic::BaseballStatistic::setSB(int sb){ sb = sb; }
-void BaseballStatistic::BaseballStatistic::setOPS(double ops){ ops = ops; }
-void BaseballStatistic::BaseballStatistic::setERA(double era){ era = era; }
+void BaseballStatistic::setTeamName(string Tname){ teamName = Tname; }
+void BaseballStatistic::setJerseyNum(int Jnum){ jerseyNum = Jnum; }
+void BaseballStatistic::setPosition(string p){ position = p; }
+void BaseballStatistic::setBatting(char B){ batting = B; }
+void BaseballStatistic::setThrowing(char T){ throwing = T; }
+void BaseballStatistic::setAtBats(int abat){ atBats = abat; }
+void BaseballStatistic::setBattingAverage(double avgbat){ battingAverage = avgbat; }
+void BaseballStatistic::setHR(int hr){ hr = hr; }
+void BaseballStatistic::setRBI(int rbi){ rbi = rbi; }
+void BaseballStatistic::setSB(int sb){ sb = sb; }
+void BaseballStatistic::setOPS(double ops){ ops = ops; }
+void BaseballStatistic::setERA(double era){ era = era; }
 		
 		
 //accessor functions
@@ -51,24 +55,34 @@ double BaseballStatistic::getERA()const {return era; }
 //Determines Age
 int BaseballStatistic::getAge()const 
 { 
-	int age; 
+  int age, d, y, m, cday, cmonth, cyear;
  
-  if (tm > m)
-  {
-    age = ty - y;
-  }
-  else if(tm == m)
-  {
-  	if (td < d)
-    { 
-    	age = (ty - 1) - y;
-    }
+  time_t year = time(NULL);
+  tm * c = localtime(&year);
+  
+   Date db = *dob;
+   d = db.getDay();
+   m = db.getMonth();
+   y = db.getYear();
+   
+   cyear = (c -> tm_year) + 1900;
+   cmonth = (c -> tm_mon) + 1;
+   cday = c -> tm_mday;
+    
+   age = cyear - y - 1;
+   
+   if (m < cmonth)
+    age++;
+    
     else 
-      age = ty - y;
-    }   
-    else
-    	age = (ty - 1) - y;
- 
+      if(m = cmonth) 
+      {
+        if(d < cday)
+        age++;
+          
+      }  
+        
+    
  return age;
 }
 
