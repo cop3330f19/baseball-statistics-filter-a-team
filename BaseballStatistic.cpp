@@ -37,28 +37,6 @@ string BaseballStatistic::getLastName()const { return lastName; }
 string BaseballStatistic::getTeamName()const { return teamName; }
 int BaseballStatistic::getJerseyNum()const { return jerseyNum; }
 string BaseballStatistic::getPosition()const { return position; }
-int BaseballStatistic::getAge()const 
-{ int age; 
- 
-    if (tm > m)
-    {
-      age = ty - y;
-    }
-    else if(tm == m)
-    {
-        if (td < d)
-      { 
-        age = (ty - 1) - y;
-      }
-       else 
-        age = ty - y;
-    }   
-    else
-   age = (ty - 1) - y;
- 
- return age;
-}
-
 char BaseballStatistic::getBatting()const {return batting; }
 char BaseballStatistic::getThrowing()const {return throwing; }
 int BaseballStatistic::getAtBats()const {return atBats; }
@@ -69,6 +47,31 @@ int BaseballStatistic::getSB()const {return sb; }
 double BaseballStatistic::getOPS()const {return ops; }
 double BaseballStatistic::getERA()const {return era; }
 		
+
+//Determines Age
+int BaseballStatistic::getAge()const 
+{ 
+	int age; 
+ 
+  if (tm > m)
+  {
+    age = ty - y;
+  }
+  else if(tm == m)
+  {
+  	if (td < d)
+    { 
+    	age = (ty - 1) - y;
+    }
+    else 
+      age = ty - y;
+    }   
+    else
+    	age = (ty - 1) - y;
+ 
+ return age;
+}
+
 //prints a single statistic row to the terminal
 void BaseballStatistic::print()const {
     cout << getFirstName() << " " << getLastName() << " " << getTeamName() << " " << getJerseyNum() << " " << getPosition() << " " 
