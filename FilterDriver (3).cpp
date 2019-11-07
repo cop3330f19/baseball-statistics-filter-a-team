@@ -73,12 +73,6 @@ int main(){
 	 search(baseList,option);
 	    
     }while(answer != "n" || answer != "no");
-    sort(baseList);
-    cout << endl << "Sorted " << endl;
-    printHeading();
-    
-    cout << endl << endl;
-    string cont ="";
 	
 return 0;
 }  
@@ -102,17 +96,4 @@ void printmenu(){
 	cout << "*************************************" << endl;
 }
     
-/*int Jnum = 0;
-   int atBat = 0;
-   int hr = 0;
-   int rbi = 0; 
-   int sb = 0;
-   int d = 0;
-   int m = 0;
-   int y =0;
-   double avgbat = 0;
-   double ops = 0; 
-   double era = 0;
-   char B; 
-   char T;
-    while(in >> Tname >> fname >> Jnum >> lname >> y >> m >> d >> B >> T >> atbat >> avgbat>> hr >> rbi >> sb>> ops >> era >> p)
+/*while(in >> Tname >> fname >> Jnum >> lname >> y >> m >> d >> B >> T >> atbat >> avgbat>> hr >> rbi >> sb>> ops >> era >> p)
