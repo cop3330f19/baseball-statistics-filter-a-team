@@ -1,4 +1,5 @@
 #include "Filter.h"
+#include "String.h"
 #include <vector>
 
 using namespace std;
