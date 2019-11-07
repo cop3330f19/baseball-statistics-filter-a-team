@@ -88,8 +88,8 @@ void printmenu(){
 	cout << "-------------------------------------" << endl;
 	cout << "How would you like to search? (Type  " << endl;
 	cout << "in character/s in parantheses for    " << endl;
-  cout << "your search)                         " << endl;
-  cout << "-------------------------------------" << endl;
+        cout << "your search)                         " << endl;
+        cout << "-------------------------------------" << endl;
 	cout << "Team (T)                             " << endl;
 	cout << "Position (P)                         " << endl;
 	cout << "Batting (B)                          " << endl;
