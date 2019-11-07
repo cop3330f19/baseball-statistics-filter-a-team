@@ -62,7 +62,7 @@ static void Filter::teamsort(vector<BaseballStatistic>& baseList) {
 }
 
 //Search function for finding player by name            
-static int Filter::search(vector<BaseballStatistic> players, string Option){
+static int Filter::search(vector<BaseballStatistic>& players, string Option){
 
 	string choice;
 	
