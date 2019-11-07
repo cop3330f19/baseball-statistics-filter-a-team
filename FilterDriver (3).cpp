@@ -12,7 +12,7 @@
 using namespace std;
 
 ////Function
-
+void printmenu();
 
 int main(){
   string Tname, fname, lname, p;
@@ -30,7 +30,7 @@ int main(){
   // reading file
   while(in.good())
   {
-        string temp; // temp variable to hold the old value during the swap
+     string temp; // temp variable to hold the old value during the swap
 	if (!getline( in, temp ))
 	{
 		return 0;
@@ -68,7 +68,7 @@ int main(){
 	cout << "Do you want to search for someone (y or yes/n or no)? ";
 	cin >> answer;
         
-	 cout << "How would you like to find them Team (Position,Batting,Batting Average,Home Runs,Runs Batted In,Stolen Bases,OPS,ERA)? ";
+	 printmenu();
 	 cin >> option;
 	 search(baseList,option);
 	    
@@ -81,7 +81,26 @@ int main(){
     string cont ="";
 	
 return 0;
-}   
+}  
+
+void printmenu(){
+	cout << "*************************************" << endl;
+	cout << "-------------------------------------" << endl;
+	cout << "How would you like to search? (Type  " << endl;
+	cout << "in character/s in parantheses for    " << endl;
+  cout << "your search)                         " << endl;
+  cout << "-------------------------------------" << endl;
+	cout << "Team (T)                             " << endl;
+	cout << "Position (P)                         " << endl;
+	cout << "Batting (B)                          " << endl;
+	cout << "Average (A)                          " << endl;
+	cout << "Home (HR)                            " << endl;
+	cout << "Runs Batted in (BI)                  " << endl;
+	cout << "Stolen Bases (SB)                    " << endl;
+	cout << "OPS (OPS)                            " << endl;
+	cout << "ERA (ERA)                            " << endl
+	cout << "*************************************" << endl;
+}
     
 /*int Jnum = 0;
    int atBat = 0;
