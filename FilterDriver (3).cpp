@@ -1,4 +1,3 @@
-#include <fstream>
 #include "BaseballStatistic.h"
 #include "Date.h"
 #include "StringHelper.h"
