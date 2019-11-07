@@ -11,6 +11,6 @@ class Filter {
   static void swap(vector<BaseballStatistic>&, int, int);
   static void namesort(vector<BaseballStatistic>&);
   static void teamsort(vector<BaseballStatistic>&);
-  static int search(vector<BaseballStatistic>&, std::string, std::string, std::string, std::string);
+  static int search(vector<BaseballStatistic>&,std::string);
 };
 #endif
