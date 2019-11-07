@@ -40,7 +40,7 @@ int main(){
 	
    	while(strs)
         {	
-		//Reads in each individual statistic line seperated by a comma
+		//Reads in each individual statistic line
 		getline(strs,Tname,',');
 		getline(strs,fname,',');
 		getline(strs,Jnum,',');
