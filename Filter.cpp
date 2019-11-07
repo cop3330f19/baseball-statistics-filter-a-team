@@ -65,6 +65,7 @@ static void Filter::teamsort(vector<BaseballStatistic>& baseList) {
 static int Filter::search(vector<BaseballStatistic> players, string Option){
 
 	string choice;
+	
 	switch (Option)
 	{
 		case "T":
@@ -100,29 +101,91 @@ static int Filter::search(vector<BaseballStatistic> players, string Option){
 			
 			if (getBatting() = bat)
 			{
+				cout << "How would you like to sort (PlayerName (P),TeamName(T))? ";
+				cin >> choice;
+			}
+			else
+				cout << "Batting hand not found" << endl;
+			break;
+		case "BA":
+			double ba;
+			cout << "What batting average are you looking for? ";
+			cin >> ba;
+			
+			if (getBattingAverage() = ba)
+			{
 				cout << "How would you like to sort (PlayerName (P),TeamName(T))?";
 				cin >> choice;
 			}
 			else
-				cout << "Position not found" << endl;
-			break;
-		case "BA":
-			cout << "What batting average are you looking for? ";
+				cout << "Batting Average not found" << endl;
 			break;
 		case "HR":
+			string hr;
 			cout << "What home run amont are you searching for? ";
+			cin >> hr;
+			
+			if (getHR() = hr)
+			{
+				cout << "How would you like to sort (PlayerName (P),TeamName(T))?";
+				cin >> choice;
+			}
+			else
+				cout << "Home runs not found" << endl;
 			break;
 		case "RBI":
+			int rbi;
 			cout << "What RBI rating are you looking for? ";
+			cin >> rbi;
+			
+			if (getRBI() = rbi)
+			{
+				cout << "How would you like to sort (PlayerName (P),TeamName(T))?";
+				cin >> choice;
+			}
+			else
+				cout << "RBI not found" << endl;
 			break;
 		case "SB":
+			int sb;
 			cout << "What Stolen Bases amount are you looking for? ";
+			cin >> sb;
+			
+			if (getSB() = sb)
+			{
+				cout << "How would you like to sort (PlayerName (P),TeamName(T))?";
+				cin >> choice;
+			}
+			else
+				cout << "stolen Bases not found" << endl;
 			break;
 		case "OPS":
+			double ops;
 			cout << "What On Base plus slugging amount are you looking for? ";
+			cin >> ops;
+			
+			if (getOPS() = ops)
+			{
+				cout << "How would you like to sort (PlayerName (P),TeamName(T))?";
+				cin >> choice;
+			}
+			else
+				cout << "OPS not found" << endl;
 			break;
 		case "ERA":
+			double era;
 			cout << "What Earned Run Average are you looking for? ";
+			cin >> era;
+			
+			if (getERA() = era)
+			{
+				cout << "How would you like to sort (PlayerName (P),TeamName(T))?";
+				cin >> choice;
+			}
+			else
+				cout << "ERA not found" << endl;
 			break;
+		default:
+			cout << "Invalid selection choice" << endl << endl;
 	}
 }
