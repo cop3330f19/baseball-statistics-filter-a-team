@@ -27,7 +27,8 @@ int main(){
   ifstream in;
   in.open("BStats.csv");// open file
 
-  while(in.good()) // reading file
+  // reading file
+  while(in.good())
   {
         string temp; // temp variable to hold the old value during the swap
 	if (!getline( in, temp ))
