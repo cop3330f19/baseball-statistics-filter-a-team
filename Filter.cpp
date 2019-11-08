@@ -1,5 +1,5 @@
 #include "Filter.h"
-#include "String.h"
+#include "Stringhelper.h"
 #include <vector>
 
 using namespace std;
@@ -11,7 +11,7 @@ static void Filter::swap(vector<BaseballStatistic>& baseList, int oIdx, int nIdx
     baseListList[nIdx] = temp; //assign the element previously at the now sorted postion
 }
 
-//Sort function for sorting by player name
+//Sort function for sorting by player name and position
 static void Filter::namesort(vector<BaseballStatistic>& baseList){
     
      int i, j, min_idx; 
@@ -24,18 +24,18 @@ static void Filter::namesort(vector<BaseballStatistic>& baseList){
       
         
         for (j = i+1; j < baseList.size(); j++)
-	{
+				{
           if (
-              (baseList[j].getFirstName().compare(baseList[min_idx].getFirstName()) < 0) || //if getFirstName() @ j is < getFirstName() @ min_idx
-              (baseList[j].getLastName().compare(baseList[min_idx].getLastName()) < 0)      //if getLastName() @ j is < getLastName() @ min_idx
-	  )   
+               (baseList[j].getLasttName().compare(baseList[min_idx].getLastName()) < 0) || //if getLasttName() @ j is < getLastName() @ min_idx
+               (baseList[j].getLastttName().compare(baseList[min_idx].getLasttName()) == 0 && baseList[j].getFirsttName().compare(baseList[min_idx].getFirstName()) < 0) || //getLName()s are equal and getFName() @ j is < getFName() @ min_idx
+	  			     (baseList[j].getLastttName().compare(baseList[min_idx].getLastName()) == 0 && baseList[j].getFirsttName().compare(baseList[min_idx].getFirstName()) == 0 && baseList[j].getPosition().compare(baseList[min_idx].getPosition()) < 0)						  )   
               
             min_idx = j;
             
         // Swap the found minimum element with the first element 
         swap(baseList, min_idx, i);
        
-	}
+				}
     } 
 }
 
@@ -51,14 +51,17 @@ static void Filter::teamsort(vector<BaseballStatistic>& baseList) {
       
         
         for (j = i+1; j < baseList.size(); j++)
-	{
-          if ((baseList[j].getTeamName().compare(baseList[min_idx].getTeamName()) < 0)) //if getTeamName() @ j is < getTeamName() @ min_idx        
+				{
+          if (
+						  (baseList[j].getTeamName().compare(baseList[min_idx].getTeamName()) < 0) || //if getTeamName() @ j is < getTeamName() @ min_idx
+						  (baseList[j].getJerseyNum().compare(baseList[min_idx].getJerseyNum()) < 0) //if getJerseyNum() @ j is < getJerseyNum() @ min_idx
+						 )         
           	min_idx = j;
             
         // Swap the found minimum element with the first element 
         swap(baseList, min_idx, i);
        
-	}
+				}
     } 
 }
 
@@ -67,7 +70,7 @@ static int Filter::search(vector<BaseballStatistic>& players, string Option){
 
 	string choice;
 	
-	switch (Option)
+	switch (toUpper(Option))
 	{
 		case "T":
 			string team;
@@ -115,7 +118,7 @@ static int Filter::search(vector<BaseballStatistic>& players, string Option){
 			
 			if (getBattingAverage() = ba)
 			{
-				cout << "How would you like to sort (PlayerName (P),TeamName(T))?";
+				cout << "How would you like to sort (PlayerName (P),TeamName(T))? ";
 				cin >> choice;
 			}
 			else
@@ -128,7 +131,7 @@ static int Filter::search(vector<BaseballStatistic>& players, string Option){
 			
 			if (getHR() = hr)
 			{
-				cout << "How would you like to sort (PlayerName (P),TeamName(T))?";
+				cout << "How would you like to sort (PlayerName (P),TeamName(T))? ";
 				cin >> choice;
 			}
 			else
@@ -154,7 +157,7 @@ static int Filter::search(vector<BaseballStatistic>& players, string Option){
 			
 			if (getSB() = sb)
 			{
-				cout << "How would you like to sort (PlayerName (P),TeamName(T))?";
+				cout << "How would you like to sort (PlayerName (P),TeamName(T))? ";
 				cin >> choice;
 			}
 			else
@@ -167,7 +170,7 @@ static int Filter::search(vector<BaseballStatistic>& players, string Option){
 			
 			if (getOPS() = ops)
 			{
-				cout << "How would you like to sort (PlayerName (P),TeamName(T))?";
+				cout << "How would you like to sort (PlayerName (P),TeamName(T))? ";
 				cin >> choice;
 			}
 			else
@@ -190,3 +193,4 @@ static int Filter::search(vector<BaseballStatistic>& players, string Option){
 			cout << "Invalid selection choice" << endl << endl;
 	}
 }
+
