@@ -12,5 +12,6 @@ class Filter {
   static void namesort(vector<BaseballStatistic>&);
   static void teamsort(vector<BaseballStatistic>&);
   static int search(vector<BaseballStatistic>&,std::string);
+  static int binarysearch(vector<Employee>&, std::string);
 };
 #endif
