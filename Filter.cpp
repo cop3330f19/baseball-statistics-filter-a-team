@@ -217,7 +217,7 @@ static int Filter::binarysearch(vector<BaseballStatistic>& decision, string key)
             return location; 
   
         // If name greater, ignore left half 
-        if (decision[location].getLName() < lname 
+        if (decision[location].getLastName() < lname 
 			|| (decision[location].getLastName() == lname && decision[location].getFirstName() < fname)) 
             lo = location + 1; 
   
