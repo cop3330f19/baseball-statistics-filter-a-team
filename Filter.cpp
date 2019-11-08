@@ -28,7 +28,8 @@ static void Filter::namesort(vector<BaseballStatistic>& baseList){
           if (
                (baseList[j].getLasttName().compare(baseList[min_idx].getLastName()) < 0) || //if getLasttName() @ j is < getLastName() @ min_idx
                (baseList[j].getLastttName().compare(baseList[min_idx].getLasttName()) == 0 && baseList[j].getFirsttName().compare(baseList[min_idx].getFirstName()) < 0) || //getLName()s are equal and getFName() @ j is < getFName() @ min_idx
-	  			     (baseList[j].getLastttName().compare(baseList[min_idx].getLastName()) == 0 && baseList[j].getFirsttName().compare(baseList[min_idx].getFirstName()) == 0 && baseList[j].getPosition().compare(baseList[min_idx].getPosition()) < 0)						  )   
+	  			     (baseList[j].getLastttName().compare(baseList[min_idx].getLastName()) == 0 && baseList[j].getFirsttName().compare(baseList[min_idx].getFirstName()) == 0 && baseList[j].getPosition().compare(baseList[min_idx].getPosition()) < 0)						  
+					   )   
               
             min_idx = j;
             
@@ -79,8 +80,14 @@ static int Filter::search(vector<BaseballStatistic>& players, string Option){
 			
 			if (getTeamName() = team)
 			{
-				cout << "How would you like to sort (PlayerName (P),TeamName(T))?";
-				cin >> choice;
+				cout << "How would you like to find your team (PlayerName & Position (P),TeamName & Jersey Number(T))? ";
+				cin >> toUpper(choice);
+				if (choice = "P")
+					namesort(players);
+				else if (choice = "T")
+					teamsort(players)
+					else
+						cout << "Invalid choice" << endl;
 			}
 			else
 				cout << "Team not found" << endl;
@@ -92,7 +99,7 @@ static int Filter::search(vector<BaseballStatistic>& players, string Option){
 			
 			if (getPosition() = pos)
 			{
-				cout << "How would you like to sort (PlayerName (P),TeamName(T))?";
+				cout << "How would you like to sort (PlayerName (P),TeamName(T))? ";
 				cin >> choice;
 			}
 			else
@@ -191,6 +198,34 @@ static int Filter::search(vector<BaseballStatistic>& players, string Option){
 			break;
 		default:
 			cout << "Invalid selection choice" << endl << endl;
+			break;
 	}
 }
 
+static int Filter::binarysearch(vector<BaseballStatistic>& decision, string key){
+  
+  int lo = 0;
+  int hi = decision.size();
+  
+   while (lo <= hi) 
+   { 
+        int location = (hi +lo)/2; 
+  
+        // Check if name is present at mid 
+        if (decision[location].getLName() == lname) 
+            return location; 
+  
+        // If name greater, ignore left half 
+        if (employees[location].getLName() < lname 
+			|| (employees[location].getLName() == lname && employees[location].getFName() < fname)) 
+            lo = location + 1; 
+  
+        // If name is smaller, ignore right half 
+        else
+            hi = location - 1; 
+   } 
+  
+    // if we reach here, then element was not present 
+    return -1; 
+ 
+}
