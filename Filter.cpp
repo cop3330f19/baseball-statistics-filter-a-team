@@ -1,5 +1,5 @@
 #include "Filter.h"
-#include "Stringhelper.h"
+#include "StringHelper.h"
 #include <vector>
 
 using namespace std;
