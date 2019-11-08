@@ -203,7 +203,8 @@ static int Filter::search(vector<BaseballStatistic>& players, string Option){
 }
 
 static int Filter::binarysearch(vector<BaseballStatistic>& decision, string key){
-  
+  string lname, fname;
+	
   int lo = 0;
   int hi = decision.size();
   
@@ -212,12 +213,12 @@ static int Filter::binarysearch(vector<BaseballStatistic>& decision, string key)
         int location = (hi +lo)/2; 
   
         // Check if name is present at mid 
-        if (decision[location].getLName() == lname) 
+        if (decision[location].getLastName() == lname) 
             return location; 
   
         // If name greater, ignore left half 
-        if (employees[location].getLName() < lname 
-			|| (employees[location].getLName() == lname && employees[location].getFName() < fname)) 
+        if (decision[location].getLName() < lname 
+			|| (decision[location].getLastName() == lname && decision[location].getFirstName() < fname)) 
             lo = location + 1; 
   
         // If name is smaller, ignore right half 
