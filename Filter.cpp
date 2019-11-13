@@ -1,34 +1,30 @@
 #include "Filter.h"
-#include "StringHelper.h"
-#include <vector>
-
-using namespace std;
 
 //Swap array elements
-static void Filter::swap(vector<BaseballStatistic>& baseList, int oIdx, int nIdx){
+void Filter::swap(vector<BaseballStatistic>& baseList, int oIdx, int nIdx){
     BaseballStatistic temp = baseList[oIdx]; //temporary employee variable to hold the old value during swap
-    baseListList[oIdx] = baseListList[nIdx]; // assign the min_idx(element to be moved) to it's position
-    baseListList[nIdx] = temp; //assign the element previously at the now sorted postion
+    baseList[oIdx] = baseList[nIdx]; // assign the min_idx(element to be moved) to it's position
+    baseList[nIdx] = temp; //assign the element previously at the now sorted postion
 }
 
 //Sort function for sorting by player name and position
-static void Filter::namesort(vector<BaseballStatistic>& baseList){
+void Filter::namesort(vector<BaseballStatistic>& baseList)
+{
     
      int i, j, min_idx; 
   
     // One by one move boundary of unsorted subarray 
-    for (i = 0; i < baseList.size()-1; i++) 
+    /*for (i = 0; i < baseList.size()-1; i++) 
     { 
         // Find the minimum element in unsorted array 
         min_idx = i; 
       
         
         for (j = i+1; j < baseList.size(); j++)
-				{
-          if (
-               (baseList[j].getLasttName().compare(baseList[min_idx].getLastName()) < 0) || //if getLasttName() @ j is < getLastName() @ min_idx
-               (baseList[j].getLastttName().compare(baseList[min_idx].getLasttName()) == 0 && baseList[j].getFirsttName().compare(baseList[min_idx].getFirstName()) < 0) || //getLName()s are equal and getFName() @ j is < getFName() @ min_idx
-	  			     (baseList[j].getLastttName().compare(baseList[min_idx].getLastName()) == 0 && baseList[j].getFirsttName().compare(baseList[min_idx].getFirstName()) == 0 && baseList[j].getPosition().compare(baseList[min_idx].getPosition()) < 0)						  
+		{
+          if ((baseList[j].getLastName().compare(baseList[min_idx].getLastName()) < 0) || //if getLasttName() @ j is < getLastName() @ min_idx
+               (baseList[j].getLastName().compare(baseList[min_idx].getLastName()) == 0 && baseList[j].getFirstName().compare(baseList[min_idx].getFirstName()) < 0) || //getLName()s are equal and getFName() @ j is < getFName() @ min_idx
+	  			     (baseList[j].getLastName().compare(baseList[min_idx].getLastName()) == 0 && baseList[j].getFirstName().compare(baseList[min_idx].getFirstName()) == 0 && baseList[j].getPosition().compare(baseList[min_idx].getPosition()) < 0)						  
 					   )   
               
             min_idx = j;
@@ -36,12 +32,12 @@ static void Filter::namesort(vector<BaseballStatistic>& baseList){
         // Swap the found minimum element with the first element 
         swap(baseList, min_idx, i);
        
-				}
-    } 
+				}*/
+    cout <<baseList[0].getTeamName() <<endl;
 }
 
 //Sort function for sorting by team
-static void Filter::teamsort(vector<BaseballStatistic>& baseList) {
+void Filter::teamsort(vector<BaseballStatistic>& baseList) {
     int i, j, min_idx; 
   
     // One by one move boundary of unsorted subarray 
@@ -52,10 +48,9 @@ static void Filter::teamsort(vector<BaseballStatistic>& baseList) {
       
         
         for (j = i+1; j < baseList.size(); j++)
-				{
-          if (
-						  (baseList[j].getTeamName().compare(baseList[min_idx].getTeamName()) < 0) || //if getTeamName() @ j is < getTeamName() @ min_idx
-						  (baseList[j].getJerseyNum().compare(baseList[min_idx].getJerseyNum()) < 0) //if getJerseyNum() @ j is < getJerseyNum() @ min_idx
+		{
+          if ((baseList[j].getTeamName().compare(baseList[min_idx].getTeamName()) < 0) || //if getTeamName() @ j is < getTeamName() @ min_idx
+			  (baseList[j].getJerseyNum() < baseList[min_idx].getJerseyNum()) //if getJerseyNum() @ j is < getJerseyNum() @ min_idx
 						 )         
           	min_idx = j;
             
@@ -67,142 +62,203 @@ static void Filter::teamsort(vector<BaseballStatistic>& baseList) {
 }
 
 //Search function for finding player by name            
-static int Filter::search(vector<BaseballStatistic>& players, string Option){
+int Filter::search(vector<BaseballStatistic>& players, string Option){
 
 	string choice;
-	
-	switch (toUpper(Option))
-	{
-		case "T":
+    StringHelper help;
+	string t = help.toUpper(Option);
+    if(t.compare("I") == 0)
+    {
 			string team;
 			cout << "What team are you searching for?: ";
 			cin >> team;
-			
-			if (getTeamName() = team)
-			{
-				cout << "How would you like to find your team (PlayerName & Position (P),TeamName & Jersey Number(T))? ";
-				cin >> toUpper(choice);
-				if (choice = "P")
-					namesort(players);
-				else if (choice = "T")
-					teamsort(players)
-					else
-						cout << "Invalid choice" << endl;
-			}
-			else
+            bool foundteam = false;
+			for(int i = 0; i < players.size(); i++)
+            {
+                if (players[i].getTeamName() == team)
+                {
+                    foundteam = true;
+                    cout << "How would you like to find your team (PlayerName & Position (P),TeamName & Jersey Number(T))? ";
+                    cin >> choice;
+                    choice = help.toUpper(Option);
+                    if (choice == "P")
+                        namesort(players);
+                    else if (choice == "T")
+                        teamsort(players);
+                        else
+                            cout << "Invalid choice" << endl;
+                }
+            }
+            if(!foundteam)
 				cout << "Team not found" << endl;
-		        break;
-		case "P":
+    }
+    else if(t.compare("P") == 0)
+    {
 			string pos;
 			cout << "What position are you searching for?: ";
 			cin >> pos;
-			
-			if (getPosition() = pos)
-			{
-				cout << "How would you like to sort (PlayerName (P),TeamName(T))? ";
-				cin >> choice;
-			}
-			else
+            bool foundpos = false;
+                
+            for(int i = 0; i < players.size(); i++)
+            {
+                if (players[i].getPosition() == pos)
+                {
+                    foundpos = true;
+                    cout << "How would you like to sort (PlayerName (P),TeamName(T))? ";
+                    cin >> choice;
+                }
+            }
+            
+            if(!foundpos)
 				cout << "Position not found" << endl;
-			break;
-		case "B":
+    }
+    else if(t.compare("B") == 0)
+    {
 			char bat;
 			cout << "What type of Batter are you searching for(L,R)? ";
 			cin >> bat;
 			
-			if (getBatting() = bat)
-			{
-				cout << "How would you like to sort (PlayerName (P),TeamName(T))? ";
-				cin >> choice;
-			}
-			else
+            bool foundb = false;
+            for(int i = 0; i < players.size(); i++)
+            {
+                if (players[i].getBatting() == bat)
+                {
+                    foundb = true;
+                    cout << "How would you like to sort (PlayerName (P),TeamName(T))? ";
+                    cin >> choice;
+                }
+            }
+        
+            if(!foundb)
 				cout << "Batting hand not found" << endl;
-			break;
-		case "BA":
+    }
+    else if(t.compare("BA") == 0)
+    {
 			double ba;
 			cout << "What batting average are you looking for? ";
 			cin >> ba;
-			
-			if (getBattingAverage() = ba)
-			{
-				cout << "How would you like to sort (PlayerName (P),TeamName(T))? ";
-				cin >> choice;
-			}
-			else
+            bool foundba = false;
+        
+			for(int i = 0; i < players.size(); i++)
+            {
+                if (players[i].getBattingAverage() == ba)
+                {
+                    foundba = true;
+                    cout << "How would you like to sort (PlayerName (P),TeamName(T))? ";
+                    cin >> choice;
+                }
+            }
+        
+            if(!foundba)
 				cout << "Batting Average not found" << endl;
-			break;
-		case "HR":
-			string hr;
+    }
+    else if(t.compare("HR") == 0)
+    {
+			int hr;
 			cout << "What home run amont are you searching for? ";
 			cin >> hr;
-			
-			if (getHR() = hr)
-			{
-				cout << "How would you like to sort (PlayerName (P),TeamName(T))? ";
-				cin >> choice;
-			}
-			else
+			bool foundhr = false;
+        
+            for(int i = 0; i < players.size(); i++)
+            {
+                if (players[i].getHR() == hr)
+                {
+                    foundhr = true;
+                    cout << "How would you like to sort (PlayerName (P),TeamName(T))? ";
+                    cin >> choice;
+                }
+            }
+        
+            if(!foundhr)
 				cout << "Home runs not found" << endl;
-			break;
-		case "RBI":
+    }
+    else if(t.compare("RBI") == 0)
+    {
 			int rbi;
 			cout << "What RBI rating are you looking for? ";
 			cin >> rbi;
+			bool foundbi = false;
+        
+            for(int i = 0; i < players.size(); i++)
+            {
+                if (players[i].getRBI() == rbi)
+                {
+                    foundbi = true;
+                    cout << "How would you like to sort (PlayerName (P),TeamName(T))?";
+                    cin >> choice;
+                }
+            }
 			
-			if (getRBI() = rbi)
-			{
-				cout << "How would you like to sort (PlayerName (P),TeamName(T))?";
-				cin >> choice;
-			}
-			else
+            if(!foundbi)
 				cout << "RBI not found" << endl;
-			break;
-		case "SB":
+    }
+    else if(t.compare("SB") == 0)
+    {
 			int sb;
 			cout << "What Stolen Bases amount are you looking for? ";
 			cin >> sb;
+			bool foundsb = false;
+        
+             for(int i = 0; i < players.size(); i++)
+            {
+                if (players[i].getSB() == sb)
+                {
+                    foundsb = true;
+                    cout << "How would you like to sort (PlayerName (P),TeamName(T))? ";
+                    cin >> choice;
+                }
+             }
 			
-			if (getSB() = sb)
-			{
-				cout << "How would you like to sort (PlayerName (P),TeamName(T))? ";
-				cin >> choice;
-			}
-			else
+            if(!foundsb)
 				cout << "stolen Bases not found" << endl;
-			break;
-		case "OPS":
+    }
+    else if(t.compare("OPS") == 0)
+    {
 			double ops;
 			cout << "What On Base plus slugging amount are you looking for? ";
 			cin >> ops;
-			
-			if (getOPS() = ops)
-			{
-				cout << "How would you like to sort (PlayerName (P),TeamName(T))? ";
-				cin >> choice;
-			}
-			else
+            bool foundops = false;
+        
+			for(int i = 0; i < players.size(); i++)
+            {
+                if (players[i].getOPS() == ops)
+                {
+                    foundops = true;
+                    cout << "How would you like to sort (PlayerName (P),TeamName(T))? ";
+                    cin >> choice;
+                }
+            }
+            
+            if(!foundops)
 				cout << "OPS not found" << endl;
-			break;
-		case "ERA":
+    }
+    else if(t.compare("ERA") == 0)
+    {
 			double era;
 			cout << "What Earned Run Average are you looking for? ";
 			cin >> era;
+            bool foundera = false;
+        
+			for(int i = 0; i < players.size(); i++)
+            {
+                if (players[i].getERA() == era)
+                {
+                    foundera = true;
+                    cout << "How would you like to sort (PlayerName (P),TeamName(T))?";
+                    cin >> choice;
+                }
+            }
 			
-			if (getERA() = era)
-			{
-				cout << "How would you like to sort (PlayerName (P),TeamName(T))?";
-				cin >> choice;
-			}
-			else
+            if(!foundera)
 				cout << "ERA not found" << endl;
-			break;
-		default:
+    }
+    else
+    {
 			cout << "Invalid selection choice" << endl << endl;
-			break;
 	}
 }
 
-static int Filter::binarysearch(vector<BaseballStatistic>& decision, string key){
+int Filter::binarysearch(vector<BaseballStatistic>& decision, string key){
   string lname, fname;
 	
   int lo = 0;
@@ -229,4 +285,9 @@ static int Filter::binarysearch(vector<BaseballStatistic>& decision, string key)
     // if we reach here, then element was not present 
     return -1; 
  
+}
+
+int main()
+{
+    return 0;
 }
