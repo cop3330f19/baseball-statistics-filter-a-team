@@ -65,15 +65,15 @@ void Filter::teamsort(vector<BaseballStatistic>& baseList) {
 int Filter::search(vector<BaseballStatistic>& players, string Option){
 
 	string choice;
-    StringHelper help;
+    	StringHelper help;
 	string t = help.toUpper(Option);
     if(t.compare("I") == 0)
     {
-			string team;
-			cout << "What team are you searching for?: ";
-			cin >> team;
+	string team;
+	cout << "What team are you searching for?: ";
+	cin >> team;
             bool foundteam = false;
-			for(int i = 0; i < players.size(); i++)
+	    for(int i = 0; i < players.size(); i++)
             {
                 if (players[i].getTeamName() == team)
                 {
@@ -94,9 +94,9 @@ int Filter::search(vector<BaseballStatistic>& players, string Option){
     }
     else if(t.compare("P") == 0)
     {
-			string pos;
-			cout << "What position are you searching for?: ";
-			cin >> pos;
+	string pos;
+	cout << "What position are you searching for?: ";
+	cin >> pos;
             bool foundpos = false;
                 
             for(int i = 0; i < players.size(); i++)
