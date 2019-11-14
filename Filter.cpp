@@ -48,25 +48,27 @@ void Filter::teamsort(vector<BaseballStatistic>& baseList) {
       
         
         for (j = i+1; j < baseList.size(); j++)
-		{
-          if ((baseList[j].getTeamName().compare(baseList[min_idx].getTeamName()) < 0) || //if getTeamName() @ j is < getTeamName() @ min_idx
-			  (baseList[j].getJerseyNum() < baseList[min_idx].getJerseyNum()) //if getJerseyNum() @ j is < getJerseyNum() @ min_idx
-						 )         
+	{
+          if (
+	  	(baseList[j].getTeamName().compare(baseList[min_idx].getTeamName()) < 0) || //if getTeamName() @ j is < getTeamName() @ min_idx
+		(baseList[j].getJerseyNum() < baseList[min_idx].getJerseyNum()) //if getJerseyNum() @ j is < getJerseyNum() @ min_idx
+	     )         
           	min_idx = j;
             
         // Swap the found minimum element with the first element 
         swap(baseList, min_idx, i);
        
-				}
+	}
     } 
 }
 
 //Search function for finding player by name            
 int Filter::search(vector<BaseballStatistic>& players, string Option){
 
-	string choice;
-    	StringHelper help;
-	string t = help.toUpper(Option);
+    string choice;
+    StringHelper help;
+    string t = help.toUpper(Option);
+	
     if(t.compare("I") == 0)
     {
 	string team;
@@ -80,6 +82,7 @@ int Filter::search(vector<BaseballStatistic>& players, string Option){
                     foundteam = true;
                     cout << "How would you like to find your team (PlayerName & Position (P),TeamName & Jersey Number(T))? ";
                     cin >> choice;
+			
                     choice = help.toUpper(Option);
                     if (choice == "P")
                         namesort(players);
@@ -106,6 +109,14 @@ int Filter::search(vector<BaseballStatistic>& players, string Option){
                     foundpos = true;
                     cout << "How would you like to sort (PlayerName (P),TeamName(T))? ";
                     cin >> choice;
+			
+		    choice = help.toUpper(Option);
+		    if (choice == "P")
+                        namesort(players);
+                    else if (choice == "T")
+                        teamsort(players);
+                    else
+                         cout << "Invalid choice" << endl;
                 }
             }
             
@@ -114,9 +125,9 @@ int Filter::search(vector<BaseballStatistic>& players, string Option){
     }
     else if(t.compare("B") == 0)
     {
-			char bat;
-			cout << "What type of Batter are you searching for(L,R)? ";
-			cin >> bat;
+	char bat;
+	cout << "What type of Batter are you searching for(L,R)? ";
+	cin >> bat;
 			
             bool foundb = false;
             for(int i = 0; i < players.size(); i++)
@@ -126,6 +137,14 @@ int Filter::search(vector<BaseballStatistic>& players, string Option){
                     foundb = true;
                     cout << "How would you like to sort (PlayerName (P),TeamName(T))? ";
                     cin >> choice;
+			
+		    choice = help.toUpper(Option);
+		    if (choice == "P")
+                        namesort(players);
+                    else if (choice == "T")
+                        teamsort(players);
+                    else
+                         cout << "Invalid choice" << endl;
                 }
             }
         
@@ -134,18 +153,26 @@ int Filter::search(vector<BaseballStatistic>& players, string Option){
     }
     else if(t.compare("BA") == 0)
     {
-			double ba;
-			cout << "What batting average are you looking for? ";
-			cin >> ba;
+	   double ba;
+	   cout << "What batting average are you looking for? ";
+      	   cin >> ba;
             bool foundba = false;
         
-			for(int i = 0; i < players.size(); i++)
+	    for(int i = 0; i < players.size(); i++)
             {
                 if (players[i].getBattingAverage() == ba)
                 {
                     foundba = true;
                     cout << "How would you like to sort (PlayerName (P),TeamName(T))? ";
                     cin >> choice;
+			
+		    choice = help.toUpper(Option);
+		    if (choice == "P")
+                        namesort(players);
+                    else if (choice == "T")
+                        teamsort(players);
+                    else
+                         cout << "Invalid choice" << endl;
                 }
             }
         
@@ -154,10 +181,10 @@ int Filter::search(vector<BaseballStatistic>& players, string Option){
     }
     else if(t.compare("HR") == 0)
     {
-			int hr;
-			cout << "What home run amont are you searching for? ";
-			cin >> hr;
-			bool foundhr = false;
+	    int hr;
+	    cout << "What home run amont are you searching for? ";
+	    cin >> hr;
+	    bool foundhr = false;
         
             for(int i = 0; i < players.size(); i++)
             {
@@ -166,6 +193,14 @@ int Filter::search(vector<BaseballStatistic>& players, string Option){
                     foundhr = true;
                     cout << "How would you like to sort (PlayerName (P),TeamName(T))? ";
                     cin >> choice;
+			
+		    choice = help.toUpper(Option);
+		    if (choice == "P")
+                        namesort(players);
+                    else if (choice == "T")
+                        teamsort(players);
+                    else
+                         cout << "Invalid choice" << endl;
                 }
             }
         
@@ -174,10 +209,10 @@ int Filter::search(vector<BaseballStatistic>& players, string Option){
     }
     else if(t.compare("RBI") == 0)
     {
-			int rbi;
-			cout << "What RBI rating are you looking for? ";
-			cin >> rbi;
-			bool foundbi = false;
+	   int rbi;
+	   cout << "What RBI rating are you looking for? ";
+	   cin >> rbi;
+	   bool foundbi = false;
         
             for(int i = 0; i < players.size(); i++)
             {
@@ -186,6 +221,14 @@ int Filter::search(vector<BaseballStatistic>& players, string Option){
                     foundbi = true;
                     cout << "How would you like to sort (PlayerName (P),TeamName(T))?";
                     cin >> choice;
+			
+		    choice = help.toUpper(Option);
+		    if (choice == "P")
+                        namesort(players);
+                    else if (choice == "T")
+                        teamsort(players);
+                    else
+                         cout << "Invalid choice" << endl;
                 }
             }
 			
@@ -206,6 +249,14 @@ int Filter::search(vector<BaseballStatistic>& players, string Option){
                     foundsb = true;
                     cout << "How would you like to sort (PlayerName (P),TeamName(T))? ";
                     cin >> choice;
+			
+		    choice = help.toUpper(Option);
+		    if (choice == "P")
+                        namesort(players);
+                    else if (choice == "T")
+                        teamsort(players);
+                    else
+                         cout << "Invalid choice" << endl;
                 }
              }
 			
@@ -226,6 +277,14 @@ int Filter::search(vector<BaseballStatistic>& players, string Option){
                     foundops = true;
                     cout << "How would you like to sort (PlayerName (P),TeamName(T))? ";
                     cin >> choice;
+			
+		    choice = help.toUpper(Option);
+		    if (choice == "P")
+                        namesort(players);
+                    else if (choice == "T")
+                        teamsort(players);
+                    else
+                         cout << "Invalid choice" << endl;
                 }
             }
             
@@ -246,6 +305,14 @@ int Filter::search(vector<BaseballStatistic>& players, string Option){
                     foundera = true;
                     cout << "How would you like to sort (PlayerName (P),TeamName(T))?";
                     cin >> choice;
+			
+		    choice = help.toUpper(Option);
+		    if (choice == "P")
+                        namesort(players);
+                    else if (choice == "T")
+                        teamsort(players);
+                    else
+                         cout << "Invalid choice" << endl;
                 }
             }
 			
@@ -254,8 +321,8 @@ int Filter::search(vector<BaseballStatistic>& players, string Option){
     }
     else
     {
-			cout << "Invalid selection choice" << endl << endl;
-	}
+	cout << "Invalid selection choice" << endl << endl;
+    }
 }
 
 int Filter::binarysearch(vector<BaseballStatistic>& decision, string key){
